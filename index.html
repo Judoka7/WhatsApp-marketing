@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuickWA – WhatsApp Bulk Message Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>📲 QuickWA</h1>
+  <p>Prépare et envoie des messages WhatsApp personnalisés en quelques clics.</p>
+
+  <label class="label">Importer un fichier CSV (nom, telephone)</label>
+  <input type="file" id="fileInput" accept=".csv" />
+
+  <label class="label">Message (utilise {{nom}})</label>
+  <textarea id="message" placeholder="Bonjour {{nom}}, votre commande est prête 👋"></textarea>
+
+  <button id="startBtn">🚀 Lancer la campagne</button>
+
+  <div id="campaign" class="hidden">
+    <p id="counter"></p>
+    <button id="nextBtn">➡️ Ouvrir le prochain message</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
