@@ -11,13 +11,21 @@ function handleFile(e) {
 
   reader.onload = function (event) {
     const lines = event.target.result.split("\n");
+
     contacts = lines
-      .map(line => line.split(","))
-      .filter(row => row.length >= 2)
-      .map(row => ({
-        nom: row[0].trim(),
-        tel: row[1].trim()
-      }));
+      .map(line => line.trim())
+      .filter(line => line.length > 0 && line.includes(",")) // Ignore les lignes vides
+      .map(line => {
+        const row = line.split(",");
+        return {
+          nom: row[0].trim(),
+          tel: row[1].replace(/\s+/g, "").trim() // Supprime tous les espaces
+        };
+      });
+
+    if (contacts.length === 0) {
+      alert("Le fichier CSV est vide ou mal formaté !");
+    }
   };
 
   reader.readAsText(file);
